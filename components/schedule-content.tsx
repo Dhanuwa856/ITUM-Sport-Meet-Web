@@ -122,7 +122,18 @@ export function ScheduleContent() {
   )
 }
 
-function EventTimelineItem({ event }: { event: any }) {
+interface Event {
+  id: string
+  name: string
+  sport_type: string
+  description?: string | null
+  event_date: string
+  location?: string
+  points_available: number
+  status: 'scheduled' | 'ongoing' | 'completed'
+}
+
+function EventTimelineItem({ event }: { event: Event }) {
   const eventTime = new Date(event.event_date).toLocaleTimeString('en-US', {
     hour: '2-digit',
     minute: '2-digit',
